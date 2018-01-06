@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "rfConfig.h"
 #include "rfConfigDlg.h"
+#include <direct.h>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -109,12 +110,9 @@ void CRfConfigDlg::OnOK()
 	char szOutputString[1024] = {""};
 	char *szAtom = NULL;
 	FILE *fdInput = NULL, *fdOutput = NULL;
-	
-	remove("rfconfig.exe");
 
-	char *pTemp = __argv[1];
-	strcpy(szRootDirectory, pTemp);
-	
+	_getcwd(szRootDirectory, 512);
+
 	//	This is where we grab the info from the dialog and PROCESS the various
 	//	..files we need to change.
 	
@@ -130,7 +128,7 @@ void CRfConfigDlg::OnOK()
 	//	This preserves the existing files in case Something Really Bad Happens.
 
 	//	Next on the hit list: rfEdit.ini
-	
+/*
 	strcpy(szCurrentFileName, szRootDirectory);
 	strcat(szCurrentFileName, "\\tools\\rfEdit.ini");
 	strcpy(szWorkingFileName, szCurrentFileName);
@@ -334,7 +332,7 @@ void CRfConfigDlg::OnOK()
 	
 	remove(szCurrentFileName);	
 	rename(szWorkingFileName, szCurrentFileName);		// Working file replaces original
-	
+*/
 	//	Ok, now we start processing .3DT files.
 	
 	strcpy(szTemp, szRootDirectory);
@@ -460,8 +458,7 @@ void CRfConfigDlg::OnOK()
 		//	..program.
 		
 		char szMsg[512];
-		sprintf(szMsg,"Processing complete!  INI files updated, %d .3DT files updated.",
-			n3DTFilesProcessed);
+		sprintf(szMsg,"Processing complete!  3DT files updated.");
 		MessageBox(szMsg, "RealityFactory Configurator", MB_OK);
 		
 		CDialog::OnOK();

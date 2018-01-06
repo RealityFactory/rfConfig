@@ -76,12 +76,12 @@ IDR_MAINFRAME           ICON    DISCARDABLE     "res\\rfConfig.ico"
 IDD_RFCONFIG_DIALOG DIALOGEX 0, 0, 225, 101
 STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
 EXSTYLE WS_EX_APPWINDOW
-CAPTION "rfConfiguration"
+CAPTION "Reality Factory Configurator"
 FONT 8, "MS Sans Serif"
 BEGIN
     DEFPUSHBUTTON   "OK",IDOK,85,52,50,14,BS_CENTER
-    LTEXT           "Press OK to start updating directory paths",IDC_STATIC,
-                    43,28,131,8,SS_CENTERIMAGE
+    LTEXT           "Press OK to start configuring directory paths",
+                    IDC_STATIC,43,28,138,8,SS_CENTERIMAGE
 END
 
 
